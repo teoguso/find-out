@@ -1,10 +1,8 @@
 import pandas as pd
 import spacy
 
-from src.data.preprocess.exploratory_data_analysis_helpers import (
-    density_of_curse_words_in_sentence,
-)
-from src.data.preprocess.exploratory_data_analysis_helpers import find_most_common_nouns
+from src.data.preprocess.helpers import density_of_curse_words_in_sentence
+from src.data.preprocess.helpers import find_most_common_nouns
 from src.utils.misc import create_spacy_docs
 from .utils.domain_objects_test import create_tweets_df
 

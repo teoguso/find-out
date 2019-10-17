@@ -1,15 +1,22 @@
+# PyCharm
 .idea/
-optout/
-find-out/
-/docs/
+# RStudio
 .Rproj.user
+# Project inputs/outputs
+/docs/
 /data/interim/sample_metoo_tweets.csv
+/data/
 /data/raw/metoo/
 /data/external/rapeglish/
 .ipynb_checkpoints/
 /notebooks/hatespeech/runs/
 /runs/
 /reports/hatespeech/figures/
+*.png
+*.jpg
+*.jpeg
+# Temp files
+tmp/
 target/
 .coverag*
 build/
@@ -17,8 +24,10 @@ dist/
 *.egg-info/
 outputs/
 output/
-target/
 __pycache__/
 *.log
 *.swp
+# pytest
 .pytest_cache
+# Numpy cache matrices
+*.npy

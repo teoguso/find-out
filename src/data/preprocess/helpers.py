@@ -111,7 +111,7 @@ def generate_ngrams(tweet, ngram_number):
 
 
 def tweet_legnth(data):
-    data["tweet_length"] = data["text"].apply(lambda tweet: len(tweet))
+    data["tweet_length"] = data["text"].apply(len)
     return data.groupby("label").mean()["tweet_length"]
 
 
@@ -142,20 +142,21 @@ def count_pejorative_bigrams(bigrams):
     """
     bigrams_counts = [bigrams[i].value_counts() for i in range(0, len(bigrams))]
     counts = []
-    for j in range(0, len(bigrams_counts)):
+    for j, _ in enumerate(bigrams_counts):
         for i, count in enumerate(bigrams_counts[j]):
             counts.append((bigrams_counts[j].index.values[i], count))
 
     return counts
 
 
-#### ALL BELOW REQUIRE SPACY DOCS
+# ### ALL BELOW REQUIRE SPACY DOCS
+
 
 def find_most_common_nouns(docs):
     """Returns a descending order sorted list of nouns and their frequencies.
 
     Args:
-        docs (list of spacy docs) : a list of spacy doc obects.
+        docs (list of spacy docs) : a list of spacy doc objects.
 
     Return:
         sorted (list of tuples): the word and its count.
@@ -199,8 +200,9 @@ def syntactic_dependency_frequency(docs):
 
 
 def compare(function, misogynistic_docs, non_misogynistic_docs):
-    misogyny = pd.DataFrame(function(misogynistic_docs),
-                            columns=[function.__name__, "count"])
+    misogyny = pd.DataFrame(
+        function(misogynistic_docs), columns=[function.__name__, "count"]
+    )
     non_misogyny = pd.DataFrame(
         function(non_misogynistic_docs), columns=[function.__name__, "count"]
     )
